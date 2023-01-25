@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import tomate from "../../assets/images/tomate.jpg";
-import { TiShoppingCart } from 'react-icons/ti'
+import { TiShoppingCart } from "react-icons/ti";
+import { verdeEscuro, verdeClaro } from "../../constants/colors";
 
 export default function ProductsComp () {
     return (
@@ -82,14 +83,14 @@ const CardProtudo = styled.div`
     h3{
         font-size: 18px;
         font-weight: 700;
-        color: #008037;
+        color: ${verdeEscuro};
     }
     p{
-        color: #008037;
+        color: ${verdeEscuro};
     }
     button{
         width: 120px;
-        background-color: #6EB122;
+        background-color: ${verdeClaro};
         border-radius: 5px;
         svg{
             font-size: 30px;
