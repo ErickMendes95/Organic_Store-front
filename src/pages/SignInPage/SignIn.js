@@ -1,5 +1,5 @@
 import styled from "styled-components"
 
-export default function HomePage(){
+export default function SignIn(){
     return
 }
