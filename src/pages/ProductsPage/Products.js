@@ -1,26 +1,26 @@
-import logo from "../assets/images/Organic Store - fundo transparente.png";
+import logo from "../../assets/images/Organic Store - fundo transparente.png";
 import styled from "styled-components";
-import { AiFillHome } from 'react-icons/ai';
+import Menu from "../../components/Menu/Menu";
+import ProductsComp from "../../components/ProductsComp/ProductsComp";
 
 export default function Products() {
     return (
         <ContainerHome>
             <ContainerLogo>
-                <img src={logo} />
+                <img src={logo} alt="logo"/>
             </ContainerLogo>
             <ContainerMain>
                 <h1>Bem vindo(a) Fulano</h1>
                 <h2>ESCOLHA OS PRODUTOS ABAIXO</h2>
+                <ProductsComp/>
             </ContainerMain>
-            <ContainerMenu>
-                <AiFillHome color="#FFFFFF"/>
-            </ContainerMenu>
+            <Menu/>
         </ContainerHome>
     );
 }
 
 const ContainerHome = styled.div`
-    
+    margin-bottom: 60px;
 `
 
 const ContainerLogo = styled.header`
@@ -46,14 +46,4 @@ const ContainerMain = styled.main`
     h2{
         color: #6EB122;
     }
-`
-
-const ContainerMenu = styled.footer`
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100vw;
-    height: 50px;
-    background-color: #6EB122;
-    z-index: 1;
 `
