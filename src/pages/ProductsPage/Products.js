@@ -2,19 +2,25 @@ import logo from "../../assets/images/Organic Store - fundo transparente.png";
 import styled from "styled-components";
 import Menu from "../../components/Menu/Menu";
 import ProductsComp from "../../components/ProductsComp/ProductsComp";
+import carrinho from "../../assets/images/carrinho.png";
+import { verdeEscuro, verdeClaro } from "../../constants/colors";
+import tomate from "../../assets/images/tomate.jpg";
+import { IoMdArrowDropup, IoMdArrowDropdown } from "react-icons/io";
+import CartModal from "../../components/CartModal/CartModal";
 
 export default function Products() {
     return (
         <ContainerHome>
             <ContainerLogo>
-                <img src={logo} alt="logo"/>
+                <img src={logo} alt="logo" />
             </ContainerLogo>
             <ContainerMain>
                 <h1>Bem vindo(a) Fulano</h1>
                 <h2>ESCOLHA OS PRODUTOS ABAIXO</h2>
-                <ProductsComp/>
+                <ProductsComp />
             </ContainerMain>
-            <Menu/>
+            <Menu />
+            <CartModal/>
         </ContainerHome>
     );
 }
@@ -40,10 +46,10 @@ const ContainerMain = styled.main`
     h1{
         font-size: 20px;
         font-weight: 700;
-        color: #008037;
+        color: ${verdeEscuro};
         margin-bottom: 10px;
     }
     h2{
-        color: #6EB122;
+        color: ${verdeClaro};
     }
 `
