@@ -11,10 +11,10 @@ function App() {
     <Context.Provider>
       <BrowserRouter>
         <Routes>
-          <Route path='/' element={<HomePage />}/>
+          {/* <Route path='/' element={<HomePage />}/>
           <Route path='/signin' element={<SignIn />}/>
           <Route path='/signup' element={<SignUp />}/>
-          <Route path='/products' element={<Products />}/>
+          <Route path='/products' element={<Products />}/> */}
           <Route path='/checkout' element={<Checkout />}/>
         </Routes>
       </BrowserRouter>

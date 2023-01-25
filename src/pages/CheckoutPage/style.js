@@ -12,11 +12,14 @@ export const Container = styled.div`
 `
 
 export const Logo = styled.div`
-    margin-top: 70px;
+    margin-top: -20px;
+    img{
+        width: 275px;
+    }
 `
 
 export const ProductInfo = styled.div`
-    margin-top: 25px;
+margin-top: -20px;
     width: 299px;
 `
 
@@ -26,9 +29,8 @@ export const Traits = styled.div`
 
 export const Title = styled.div`
     display: flex;
-    font-size: 16px;
-    p{
-        padding-left: 5px;
+    font-size: 18px;
+    li{
         color: ${verdeEscuro}
     }
     `
@@ -36,14 +38,28 @@ export const Title = styled.div`
 export const Trait = styled.div`
     margin-top: 10px;
     font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+    line-height: 18px;
+    overflow-y: scroll;
+    max-height: 100px;
     p{
         margin-bottom: 5px;
+        padding-left: 5px;
         color: #fff;
     }
     `
+
+export const Text= styled.div`
+`
     
 export const Price = styled.div`
     margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+`
+
+export const PriceTrait = styled.div`
 `
 
 export const FormsContainer = styled.div`
@@ -58,11 +74,13 @@ export const FormsContainer = styled.div`
         height: 52px;
         margin-bottom: 10px;
         border-radius: 5px;
+        font-size: 12px;
+        padding-left: 5px;
     }
     button{
-        color: ${verdeEscuro};
+        color: #fff;
         height: 52px;
-        background: #FF4791;
+        background: ${verdeEscuro};
         border: none;
         border-radius: 5px;
         cursor: pointer;

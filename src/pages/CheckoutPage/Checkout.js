@@ -1,13 +1,13 @@
-import Footer from "../../components/Footer/Footer"
-import Logo from "../../assets/images/Organic Store - fundo transparente.png"
-import {Container, Logo, ProductInfo, Traits, Title, Trait, Price, FormsContainer, Label1, Label2 } from "./style"
+// import Footer from "../../components/Footer/Footer"
+import logo from "../../assets/images/Organic Store - fundo transparente.png"
+import {Container, Logo, ProductInfo, Traits, Title, Trait, Text, Price, PriceTrait, FormsContainer, Label1, Label2 } from "./style"
 import BuyFinishedModal from "../../components/BuyFinishedModal/BuyFinishedModal"
 
 export default function Checkout(){
     return (
         <Container>
             <Logo>
-                <img src={Logo} alt="Logo"/>
+                <img src={logo} alt="Logo"/>
             </Logo>
             <ProductInfo>
                 <Traits>
@@ -17,9 +17,25 @@ export default function Checkout(){
                         </ul>
                     </Title>
                     <Trait>
-                    {/* {products.map((p)=> {
-                        <p>{p.name}</p>
-                    })} */}
+                        <Text>
+                            {/* {products.map((p)=> {
+                                <p>{p.name}</p>
+                            })} */}
+                            <p>Tomate - 500gr</p>
+                            <p>Tomate - 500gr</p>
+                            <p>Tomate - 500gr</p>
+                            <p>Tomate - 500gr</p>
+                            <p>Tomate - 500gr</p>
+                            <p>Tomate - 500gr</p>
+                            <p>Tomate - 500gr</p>
+                            <p>Tomate - 500gr</p>
+                            <p>Tomate - 500gr</p>
+                            <p>Tomate - 500gr</p>
+                            <p>Tomate - 500gr</p>
+                        </Text>
+                        <PriceTrait>
+                            <p>R$ 24,00</p>
+                        </PriceTrait>
                     </Trait>
                 </Traits>
                 <Price>
@@ -28,9 +44,9 @@ export default function Checkout(){
                             <li>Valor Total</li>
                         </ul>
                     </Title>
-                    <Trait>
+                    <PriceTrait>
                         <p>R$ 120,00</p>
-                    </Trait>
+                    </PriceTrait>
                 </Price>
             </ProductInfo>
             <FormsContainer>
@@ -46,8 +62,8 @@ export default function Checkout(){
                     <button>Concluir Compra</button>
                 </form>
             </FormsContainer>
-            <Footer/>
-            <BuyFinishedModal/>
+            {/* <Footer/> */}
+            {/* <BuyFinishedModal/> */}
         </Container>
     )
 }
