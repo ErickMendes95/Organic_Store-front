@@ -1,18 +1,18 @@
-import logo from "../assets/images/Organic Store - fundo transparente.png";
+import logo from "../../assets/images/Organic Store - fundo transparente.png";
 import styled from "styled-components";
-import Menu from "../components/Menu";
-import Products from "../components/Products";
+import Menu from "../../components/Menu/Menu";
+import ProductsComp from "../../components/ProductsComp/ProductsComp";
 
 export default function Products() {
     return (
         <ContainerHome>
             <ContainerLogo>
-                <img src={logo} />
+                <img src={logo} alt="logo"/>
             </ContainerLogo>
             <ContainerMain>
                 <h1>Bem vindo(a) Fulano</h1>
                 <h2>ESCOLHA OS PRODUTOS ABAIXO</h2>
-                <Products/>
+                <ProductsComp/>
             </ContainerMain>
             <Menu/>
         </ContainerHome>

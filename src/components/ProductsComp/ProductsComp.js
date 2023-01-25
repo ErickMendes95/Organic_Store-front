@@ -1,12 +1,12 @@
 import styled from "styled-components";
-import tomate from "../assets/images/tomate.jpg";
+import tomate from "../../assets/images/tomate.jpg";
 import { TiShoppingCart } from 'react-icons/ti'
 
-export default function Products () {
+export default function ProductsComp () {
     return (
         <ContainerProdutos>
                     <CardProtudo>
-                        <img src={tomate} />
+                        <img src={tomate} alt="produto"/>
                         <h3>Tomate - 500GR</h3>
                         <p>R$20,00</p>
                         <button>
@@ -14,7 +14,7 @@ export default function Products () {
                         </button>
                     </CardProtudo>
                     <CardProtudo>
-                        <img src={tomate} />
+                        <img src={tomate} alt="produto"/>
                         <h3>Tomate - 500GR</h3>
                         <p>R$20,00</p>
                         <button>
@@ -22,7 +22,7 @@ export default function Products () {
                         </button>
                     </CardProtudo>
                     <CardProtudo>
-                        <img src={tomate} />
+                        <img src={tomate} alt="produto"/>
                         <h3>Tomate - 500GR</h3>
                         <p>R$20,00</p>
                         <button>
@@ -30,7 +30,7 @@ export default function Products () {
                         </button>
                     </CardProtudo>
                     <CardProtudo>
-                        <img src={tomate} />
+                        <img src={tomate} alt="produto"/>
                         <h3>Tomate - 500GR</h3>
                         <p>R$20,00</p>
                         <button>
@@ -38,7 +38,7 @@ export default function Products () {
                         </button>
                     </CardProtudo>
                     <CardProtudo>
-                        <img src={tomate} />
+                        <img src={tomate} alt="produto"/>
                         <h3>Tomate - 500GR</h3>
                         <p>R$20,00</p>
                         <button>
@@ -46,7 +46,7 @@ export default function Products () {
                         </button>
                     </CardProtudo>
                     <CardProtudo>
-                        <img src={tomate} />
+                        <img src={tomate} alt="produto"/>
                         <h3>Tomate - 500GR</h3>
                         <p>R$20,00</p>
                         <button>
