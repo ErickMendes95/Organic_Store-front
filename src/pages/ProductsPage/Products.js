@@ -1,4 +1,4 @@
-import logo from "../assets/images/Organic Store - fundo transparente.png";
+import logo from "../../assets/images/Organic Store - fundo transparente.png";
 import styled from "styled-components";
 import { AiFillHome } from 'react-icons/ai';
 
