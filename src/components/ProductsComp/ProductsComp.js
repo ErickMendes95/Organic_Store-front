@@ -1,87 +1,51 @@
 import styled from "styled-components";
-import tomate from "../../assets/images/tomate.jpg";
 import { TiShoppingCart } from "react-icons/ti";
 import { verdeEscuro, verdeClaro } from "../../constants/colors";
+import { useContext, useState } from "react";
+import { ContextSelecionados } from "../../context/ContextSelecionados";
 
-export default function ProductsComp () {
+export default function ProductsComp({ p }) {
+    const [produtosSelec, setProdutosSelec] = useContext(ContextSelecionados);
+    const [clicked, setClicked] = useState(false);
+
+    function selecionarProduto(produto) {
+        setClicked(true);
+        setProdutosSelec([...produtosSelec, produto]); 
+        console.log(produtosSelec)
+    }
+
     return (
-        <ContainerProdutos>
-                    <CardProtudo>
-                        <img src={tomate} alt="produto"/>
-                        <h3>Tomate - 500GR</h3>
-                        <p>R$20,00</p>
-                        <button>
-                            <TiShoppingCart />
-                        </button>
-                    </CardProtudo>
-                    <CardProtudo>
-                        <img src={tomate} alt="produto"/>
-                        <h3>Tomate - 500GR</h3>
-                        <p>R$20,00</p>
-                        <button>
-                            <TiShoppingCart />
-                        </button>
-                    </CardProtudo>
-                    <CardProtudo>
-                        <img src={tomate} alt="produto"/>
-                        <h3>Tomate - 500GR</h3>
-                        <p>R$20,00</p>
-                        <button>
-                            <TiShoppingCart />
-                        </button>
-                    </CardProtudo>
-                    <CardProtudo>
-                        <img src={tomate} alt="produto"/>
-                        <h3>Tomate - 500GR</h3>
-                        <p>R$20,00</p>
-                        <button>
-                            <TiShoppingCart />
-                        </button>
-                    </CardProtudo>
-                    <CardProtudo>
-                        <img src={tomate} alt="produto"/>
-                        <h3>Tomate - 500GR</h3>
-                        <p>R$20,00</p>
-                        <button>
-                            <TiShoppingCart />
-                        </button>
-                    </CardProtudo>
-                    <CardProtudo>
-                        <img src={tomate} alt="produto"/>
-                        <h3>Tomate - 500GR</h3>
-                        <p>R$20,00</p>
-                        <button>
-                            <TiShoppingCart />
-                        </button>
-                    </CardProtudo>
-                </ContainerProdutos>
+        <CardProduto>
+            <img src={p.image} alt="produto" />
+            <h3>{p.name}</h3>
+            <p>{p.value}</p>
+            <button
+                onClick={() => selecionarProduto(p)}
+                disabled={clicked}
+            >
+                <TiShoppingCart />
+            </button>
+        </CardProduto>
     );
 }
 
-const ContainerProdutos = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 15px;
-`
-
-const CardProtudo = styled.div`
+const CardProduto = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 150px;
     height: 200px;
     background-color: #DDDDDD;
+    border: 0px solid green;
     border-radius: 5px;
     gap:10px;
     padding: 10px;
+    overflow: auto;
     img {
         width: 100px;
     }
     h3{
-        font-size: 18px;
+        font-size: 17px;
         font-weight: 700;
         color: ${verdeEscuro};
     }
@@ -90,8 +54,13 @@ const CardProtudo = styled.div`
     }
     button{
         width: 120px;
-        background-color: ${verdeClaro};
+        background-color: ${props => props.disabled ? verdeEscuro : verdeClaro};
         border-radius: 5px;
+        cursor: pointer;
+        &:disabled {
+        background-color: #AAAAAA;
+        cursor: default;
+    }
         svg{
             font-size: 30px;
             color: #FFFFFF;
