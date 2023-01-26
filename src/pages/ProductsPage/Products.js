@@ -1,14 +1,25 @@
 import logo from "../../assets/images/Organic Store - fundo transparente.png";
+import axios from "axios";
+import { useContext, useEffect, useState } from "react"
 import styled from "styled-components";
 import Menu from "../../components/Menu/Menu";
 import ProductsComp from "../../components/ProductsComp/ProductsComp";
-import carrinho from "../../assets/images/carrinho.png";
 import { verdeEscuro, verdeClaro } from "../../constants/colors";
-import tomate from "../../assets/images/tomate.jpg";
-import { IoMdArrowDropup, IoMdArrowDropdown } from "react-icons/io";
 import CartModal from "../../components/CartModal/CartModal";
 
 export default function Products() {
+    const [produtos, setProdutos] = useState([]);
+
+    useEffect(() => {
+        axios.get(`${process.env.REACT_APP_API_URL}/produtos`)
+            .then(res => {
+                setProdutos(res.data);
+            })
+            .catch(err => {
+                console.log(err.response)
+            });
+    }, [])
+
     return (
         <ContainerHome>
             <ContainerLogo>
@@ -17,10 +28,14 @@ export default function Products() {
             <ContainerMain>
                 <h1>Bem vindo(a) Fulano</h1>
                 <h2>ESCOLHA OS PRODUTOS ABAIXO</h2>
-                <ProductsComp />
+                <ContainerProdutos>
+                    {produtos.map(p =>
+                        <ProductsComp p={p} key={p._id}/>
+                    )}
+                </ContainerProdutos>
             </ContainerMain>
             <Menu />
-            <CartModal/>
+            {/* <CartModal/> */}
         </ContainerHome>
     );
 }
@@ -52,4 +67,13 @@ const ContainerMain = styled.main`
     h2{
         color: ${verdeClaro};
     }
+`
+
+const ContainerProdutos = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 15px;
 `
