@@ -1,4 +1,5 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { useState } from "react"
 import Context from './context/Context';
 import SignIn from './pages/SignInPage/SignIn';
 import SignUp from './pages/SignUpPage/SignUp';
@@ -7,8 +8,14 @@ import Products from './pages/ProductsPage/Products';
 import HomePage from './pages/HomePage/HomePage'
 
 function App() {
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const [confirmPassword, setConfirmPassword] = useState("")
+  const [name, setName] = useState("")        
+  const [token, setToken] = useState("")
+
   return (
-    <Context.Provider>
+    <Context.Provider value={{email, setEmail, password, setPassword, name, setName, token, setToken, confirmPassword, setConfirmPassword}}>
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<HomePage />}/>
