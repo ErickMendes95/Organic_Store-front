@@ -1,11 +1,10 @@
 import logo from "../../assets/images/Organic Store - fundo transparente.png";
 import axios from "axios";
-import { useContext, useEffect, useState } from "react"
-import styled from "styled-components";
+import { useEffect, useState } from "react"
 import Menu from "../../components/Menu/Menu";
-import ProductsComp from "../../components/ProductsComp/ProductsComp";
-import { verdeEscuro, verdeClaro } from "../../constants/colors";
+import CardProtudo from "../../components/CardProdutos/CardProdutos";
 import CartModal from "../../components/CartModal/CartModal";
+import { ContainerHome, ContainerLogo, ContainerMain, ContainerProdutos } from "./style";
 
 export default function Products() {
     const [produtos, setProdutos] = useState([]);
@@ -31,7 +30,7 @@ export default function Products() {
                 <h2>ESCOLHA OS PRODUTOS ABAIXO</h2>
                 <ContainerProdutos>
                     {produtos.map(p =>
-                        <ProductsComp p={p} key={p._id}/>
+                        <CardProtudo p={p} key={p._id}/>
                     )}
                 </ContainerProdutos>
             </ContainerMain>
@@ -41,41 +40,3 @@ export default function Products() {
         </ContainerHome>
     );
 }
-
-const ContainerHome = styled.div`
-    margin-bottom: 60px;
-`
-
-const ContainerLogo = styled.header`
-    display: flex;
-    justify-content: center;
-    background-color: #6EB122;
-    img{
-        width: 150px;
-    }
-`
-
-const ContainerMain = styled.main`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 15px;
-    h1{
-        font-size: 20px;
-        font-weight: 700;
-        color: ${verdeEscuro};
-        margin-bottom: 10px;
-    }
-    h2{
-        color: ${verdeClaro};
-    }
-`
-
-const ContainerProdutos = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 15px;
-`
