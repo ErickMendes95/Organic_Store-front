@@ -5,10 +5,15 @@ import SignUp from './pages/SignUpPage/SignUp';
 import Checkout from './pages/CheckoutPage/Checkout';
 import Products from './pages/ProductsPage/Products';
 import HomePage from './pages/HomePage/HomePage'
+import { useState } from 'react';
+import { ContextSelecionados } from './context/ContextSelecionados';
 
 function App() {
+  const [produtosSelec, setProtudosSelec] = useState([]);
+
   return (
     <Context.Provider>
+      <ContextSelecionados.Provider value={[produtosSelec, setProtudosSelec]}>
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<HomePage />}/>
@@ -18,6 +23,7 @@ function App() {
           <Route path='/checkout' element={<Checkout />}/>
         </Routes>
       </BrowserRouter>
+      </ContextSelecionados.Provider>
     </Context.Provider>
   );
 }
