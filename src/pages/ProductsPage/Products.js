@@ -9,6 +9,7 @@ import CartModal from "../../components/CartModal/CartModal";
 
 export default function Products() {
     const [produtos, setProdutos] = useState([]);
+    const [showCart, setShowCart] = useState(false)
 
     useEffect(() => {
         axios.get(`${process.env.REACT_APP_API_URL}/produtos`)
@@ -34,8 +35,9 @@ export default function Products() {
                     )}
                 </ContainerProdutos>
             </ContainerMain>
-            <Menu />
-            {/* <CartModal/> */}
+            <Menu showCart={showCart} setShowCart={setShowCart}/>
+            <CartModal 
+            showCart={showCart}/>
         </ContainerHome>
     );
 }

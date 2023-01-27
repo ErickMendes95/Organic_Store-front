@@ -9,11 +9,11 @@ import { useState } from 'react';
 import { ContextSelecionados } from './context/ContextSelecionados';
 
 function App() {
-  const [produtosSelec, setProtudosSelec] = useState([]);
+  const [produtosSelec, setProdudosSelec] = useState([]);
 
   return (
     <Context.Provider>
-      <ContextSelecionados.Provider value={[produtosSelec, setProtudosSelec]}>
+      <ContextSelecionados.Provider value={[produtosSelec, setProdudosSelec]}>
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<HomePage />}/>
