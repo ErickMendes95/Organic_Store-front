@@ -7,7 +7,7 @@ export default function SignIn() {
   const { email, setEmail, token, setToken, password, setPassword } = useContext(Context)
 
   function signIn(e) {
-    e.preventDefault()    
+    e.preventDefault() 
   }
 
   return (
