@@ -1,10 +1,37 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import carrinho from "../../assets/images/carrinho.png";
 import { verdeEscuro, verdeClaro } from "../../constants/colors";
 import tomate from "../../assets/images/tomate.jpg";
 import { IoMdArrowDropup, IoMdArrowDropdown } from "react-icons/io";
+import { useContext, useState } from "react";
+import { ContextSelecionados } from "../../context/ContextSelecionados";
+import { useNavigate } from "react-router-dom";
 
-export default function CartModal(){
+export default function CartModal({showCart}){
+
+    const navigate = useNavigate()
+    const [produtosSelec, setProdutosSelec] = useContext(ContextSelecionados);
+    const [produtoQtd, setProdutoQtd] = useState(1)
+
+    function QuantidadeProduto(e){
+        if(produtoQtd >= 1){
+            if(e === 'up'){
+                setProdutoQtd(produtoQtd+1)
+            } else if(e === 'dw'){
+                setProdutoQtd(produtoQtd-1)
+                if(produtoQtd <= 1){
+                    setProdutoQtd(1)
+                    alert("impossível colocar 0")
+                }
+            }
+        }
+    }
+
+    function FinalizarCompra(){
+        navigate("/checkout")
+    }
+    
+    if(showCart === false) return null
     return (
         <ContainerCart>
                 <Cart>
@@ -16,35 +43,47 @@ export default function CartModal(){
                         <p>VALOR</p>
                     </Cabeçalho>
                     <ContainerProdutos>
-                        <CardProtudo>
-                            <ContainerImage>
-                                <img src={tomate} alt="produto" />
-                            </ContainerImage>
-                            <ContainerInfos>
-                                <p><bold>Tomate - 500GR</bold></p>
-                                <p>R$20,00</p>
-                            </ContainerInfos>
-                            <Quantidade>
-                                <p>1</p>
-                                <ArrowUp>
-                                    <IoMdArrowDropup />
-                                </ArrowUp>
-                                <ArrowDown>
-                                    <IoMdArrowDropdown />
-                                </ArrowDown>
-                            </Quantidade>
-                            <p><bold>R$20,00</bold></p>
-                        </CardProtudo>                        
+                        {/* {produtosSelec.map((p)=>{ */}
+                            <CardProtudo>
+                                <ContainerImage>
+                                    <img src={tomate} alt="produto" />
+                                </ContainerImage>
+                                <ContainerInfos>
+                                    <p>tomate</p>
+                                </ContainerInfos>
+                                <Quantidade>
+                                    <p>{produtoQtd}</p>
+                                    <ArrowUp>
+                                        <IoMdArrowDropup onClick={()=> QuantidadeProduto('up')}/>
+                                    </ArrowUp>
+                                    <ArrowDown>
+                                        <IoMdArrowDropdown onClick={()=> QuantidadeProduto('dw')}/>
+                                    </ArrowDown>
+                                </Quantidade>
+                                <Valor>
+                                    <p>R$ {produtoQtd*20}</p>
+                                </Valor>
+                            </CardProtudo>                        
+                        {/* // })} */}
                     </ContainerProdutos>
                     <FinalValue>
                         <p>VALOR TOTAL:</p>
                         <p>120,00</p>
                     </FinalValue>
-                    <Finish>FINALIZAR COMPRA</Finish>
+                    <Finish onClick={() => FinalizarCompra()}>FINALIZAR COMPRA</Finish>
                 </Cart>
             </ContainerCart>
     );
 }
+
+const fadeIn = keyframes`
+    from{
+        transform: translateY(100%)
+    }
+    to{
+        transform: translateY(0)
+    }
+`
 
 const ContainerCart = styled.div`
     position: fixed;
@@ -53,6 +92,7 @@ const ContainerCart = styled.div`
     bottom: 49px;
     width: 100vw;
     background-color: rgba(0,0,0,0.5);
+    animation: ${fadeIn} 0.6s ease-in;
 `
 
 const Cart = styled.div`
@@ -67,6 +107,8 @@ const Cart = styled.div`
     background-color: #FFFFFF;
     z-index: 1;
     
+
+
     img{
         margin-top: 10px;
         width: 65px;
@@ -91,8 +133,8 @@ const Cabeçalho = styled.div`
     margin-top: 20px;
     padding: 2px;
     span{
-        margin-left: 30px;
-        margin-right: 40px;
+        padding-left: 20px;
+        padding-right: 30px;
     }
 `
 
@@ -125,6 +167,8 @@ const ContainerImage = styled.div`
 
 const ContainerInfos = styled.div`
     width: 110px;
+    line-height: 18px;
+    font-weight: 700;
 `
 
 const Quantidade = styled.div`
@@ -134,28 +178,33 @@ const Quantidade = styled.div`
     justify-content: center;
     color: #FFFFFF;
     background-color: ${verdeClaro};
-    width: 30px;
-    height: 35px;
+    width: 35px;
+    height: 40px;
     border-radius: 20px;
-    margin-left: 5px;
+    margin-left: 0px;
     margin-right: 30px;
-    padding-top: 3px;
 `
 
 const ArrowUp = styled.button`
     background-color: rgba(235,0,0,0);
     position: absolute;
     top: -6px;
-    font-size: 20px;
+    font-size: 22px;
     color: #FFFFFF;
+    cursor: pointer;
 `
 
 const ArrowDown = styled.button`
     background-color: rgba(0,0,0,0);
     position: absolute;
-    top: 21px;
-    font-size: 20px;
+    top: 23px;
+    font-size: 22px;
     color: #FFFFFF;
+    cursor: pointer;
+`
+
+const Valor = styled.div`
+    font-weight: 700;
 `
 
 const FinalValue = styled.div`

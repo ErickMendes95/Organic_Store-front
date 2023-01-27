@@ -3,11 +3,11 @@ import { AiFillHome } from 'react-icons/ai';
 import { TiShoppingCart } from 'react-icons/ti'
 import { IoExitOutline } from 'react-icons/io5';
 
-export default function Menu() {
+export default function Menu({showCart,setShowCart}) {
     return (
         <ContainerMenu>
             <AiFillHome />
-            <TiShoppingCart />
+            <TiShoppingCart onClick={()=>setShowCart(!showCart)}/>
             <IoExitOutline />
         </ContainerMenu>
     );
@@ -25,6 +25,7 @@ const ContainerMenu = styled.footer`
     background-color: #6EB122;
     z-index: 1;
     svg{
+        cursor: pointer;
         font-size: 35px;
         color: #FFFFFF;
     }
