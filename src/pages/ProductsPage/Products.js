@@ -21,7 +21,7 @@ export default function Products() {
             });
     }, [])
 
-    return (
+    return (    
         <ContainerHome>
             <ContainerLogo>
                 <img src={logo} alt="logo" />
