@@ -11,6 +11,11 @@ export const Container = styled.div`
   img {
   width:370px;
   } 
+  svg{
+    margin-top: 20px;
+    color:#FFFFFF;
+    font-size:50px;
+  }
 
 `
 export const StyledForm = styled.form`
