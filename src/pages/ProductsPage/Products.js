@@ -16,11 +16,11 @@ export default function Products() {
                 setProdutos(res.data);
             })
             .catch(err => {
-                console.log(err.response)
+                (err.response)
             });
     }, [])
 
-    return (    
+    return (
         <ContainerHome>
             <ContainerLogo>
                 <img src={logo} alt="logo" />
@@ -30,13 +30,13 @@ export default function Products() {
                 <h2>ESCOLHA OS PRODUTOS ABAIXO</h2>
                 <ContainerProdutos>
                     {produtos.map(p =>
-                        <CardProtudo p={p} key={p._id}/>
+                        <CardProtudo p={p} key={p._id} />
                     )}
                 </ContainerProdutos>
             </ContainerMain>
-            <Menu showCart={showCart} setShowCart={setShowCart}/>
-            <CartModal 
-            showCart={showCart}/>
+            <Menu showCart={showCart} setShowCart={setShowCart} />
+            <CartModal
+                showCart={showCart} />
         </ContainerHome>
     );
 }

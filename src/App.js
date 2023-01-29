@@ -13,23 +13,24 @@ function App() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [confirmPassword, setConfirmPassword] = useState("")
-  const [name, setName] = useState("")        
+  const [name, setName] = useState("")
   const [token, setToken] = useState("")
   const [produtosSelec, setProdudosSelec] = useState([]);
-  
-  return (
-    <Context.Provider value={{email, setEmail, password, setPassword, name, setName, token, setToken, confirmPassword, setConfirmPassword}}>
-      <ContextSelecionados.Provider value={[produtosSelec, setProdudosSelec]}>
+  const [totalValue, setTotalValue] = useState(0)
 
-      <BrowserRouter>
-        <Routes>
-          <Route path='/' element={<HomePage />}/>
-          <Route path='/signin' element={<SignIn />}/>
-          <Route path='/signup' element={<SignUp />}/>
-          <Route path='/products' element={<Products />}/>
-          <Route path='/checkout' element={<Checkout />}/>
-        </Routes>
-      </BrowserRouter>
+  return (
+    <Context.Provider value={{ email, setEmail, password, setPassword, name, setName, token, setToken, confirmPassword, setConfirmPassword }}>
+      <ContextSelecionados.Provider value={[produtosSelec, setProdudosSelec, totalValue, setTotalValue]}>
+
+        <BrowserRouter>
+          <Routes>
+            <Route path='/' element={<HomePage />} />
+            <Route path='/signin' element={<SignIn />} />
+            <Route path='/signup' element={<SignUp />} />
+            <Route path='/products' element={<Products />} />
+            <Route path='/checkout' element={<Checkout />} />
+          </Routes>
+        </BrowserRouter>
       </ContextSelecionados.Provider>
     </Context.Provider>
   );

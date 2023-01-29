@@ -1,9 +1,9 @@
 import { Container, StyledForm, StyledInput, StyledButton, } from './style'
 import logo from "../../assets/images/Organic Store - fundo transparente.png";
-import {useContext } from 'react';
+import { useContext } from 'react';
 import Context from '../../context/Context';
 import axios from 'axios'
-import {useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { ThreeDots } from "react-loader-spinner"
 import { useState } from "react"
 import { BsFillReplyAllFill } from "react-icons/bs";
@@ -16,7 +16,7 @@ export default function SignIn() {
   const navigate = useNavigate();
 
   function signIn(e) {
-    e.preventDefault() 
+    e.preventDefault()
     setBotaoAnimado(
       <ThreeDots
         height="80"
@@ -35,17 +35,18 @@ export default function SignIn() {
 
     const promessa = axios.post(URL, dadosCadastro)
 
-    promessa.then(res => { 
+    promessa.then(res => {
       navigate('/products')
       setToken(res.data)
-      console.log(token)
-     })
+        (token)
+    })
 
     promessa.catch(res => {
       alert('Usuário ou senha inválidos!')
       setBotaoAnimado("Entrar")
       setEmail("")
-      setPassword("") })       
+      setPassword("")
+    })
   }
 
   return (
@@ -72,11 +73,11 @@ export default function SignIn() {
         />
 
         <StyledButton type="submit">
-         {botaoAnimado}
+          {botaoAnimado}
         </StyledButton>
 
       </StyledForm>
-      <BsFillReplyAllFill onClick={()=>{navigate('/')}}/>
+      <BsFillReplyAllFill onClick={() => { navigate('/') }} />
 
     </Container>)
 }
