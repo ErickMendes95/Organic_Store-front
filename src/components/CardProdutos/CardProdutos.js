@@ -9,8 +9,7 @@ export default function CardProtudo({ p }) {
 
     function selecionarProduto(produto) {
         setClicked(true);
-        setProdutosSelec([...produtosSelec, produto]); 
-        console.log(produtosSelec)
+        setProdutosSelec([...produtosSelec, produto]);
     }
 
     return (

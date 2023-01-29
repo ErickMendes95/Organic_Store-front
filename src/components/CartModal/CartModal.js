@@ -1,6 +1,5 @@
-import { keyframes } from "styled-components";
 import carrinho from "../../assets/images/carrinho.png";
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { ContextSelecionados } from "../../context/ContextSelecionados";
 import { useNavigate } from "react-router-dom";
 import CardProd from "../CardProd/CardProd";
@@ -8,14 +7,18 @@ import { ContainerCart, Cart, LogoCart, Cabeçalho, ContainerProdutos, FinalValu
 
 export default function CartModal({ showCart }) {
     const navigate = useNavigate()
-    const [produtosSelec, setProdutosSelec] = useContext(ContextSelecionados);
-    // let soma = 0;
-    // let aux = 0;
-    
-    console.log(produtosSelec);
+    const [totalValue, setTotalValue] = useState(0)
+    const [produtosSelec] = useContext(ContextSelecionados)
+
+    useEffect(() => {
+        setTotalValue(produtosSelec.reduce((acc, obj) => {
+            return acc + obj.quantity * obj.value
+        }, 0))
+
+    }, [produtosSelec])
 
     function FinalizarCompra() {
-        navigate("/checkout")
+        navigate("/checkout", {state: {totalValue:totalValue}})
     }
 
     if (showCart === false) return null
@@ -30,14 +33,13 @@ export default function CartModal({ showCart }) {
                     <p>VALOR</p>
                 </Cabeçalho>
                 <ContainerProdutos>
-                    {produtosSelec.map((p) => 
-                       <CardProd key={p._id} p={p}/>
+                    {produtosSelec.map((p) =>
+                        <CardProd key={p._id} p={p} />
                     )}
                 </ContainerProdutos>
                 <FinalValue>
                     <p>VALOR TOTAL:</p>
-                    <p>120,00</p>
-                    {/* <p>{soma = produtosSelec.map((p) => aux += Number(p.quantity) * Number(p.value))}</p> */}
+                    <p>R$ {totalValue}</p>
                 </FinalValue>
                 <Finish onClick={() => FinalizarCompra()}>FINALIZAR COMPRA</Finish>
             </Cart>

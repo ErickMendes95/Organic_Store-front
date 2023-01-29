@@ -1,28 +1,33 @@
-import { useContext, useState } from "react";
+import { useContext} from "react";
 import { ContextSelecionados } from "../../context/ContextSelecionados";
 import { IoMdArrowDropup, IoMdArrowDropdown } from "react-icons/io";
-import { CardProtudo, ContainerImage, ContainerInfos, Quantidade, ArrowUp, ArrowDown, Valor} from "./style";
+import { CardProtudo, ContainerImage, ContainerInfos, Quantidade, ArrowUp, ArrowDown, Valor } from "./style";
 
-export default function CardProd({p}) {
-    const [produtoQtd, setProdutoQtd] = useState(p.quantity);
+export default function CardProd({ p }) {
     const [produtosSelec, setProdutosSelec] = useContext(ContextSelecionados);
 
+
+
     function QuantidadeProduto(e) {
-        if (produtoQtd >= 1) {
-            if (e === 'up') {
-                setProdutoQtd(produtoQtd + 1)
-            } else if (e === 'dw') {
-                setProdutoQtd(produtoQtd - 1)
-                if (produtoQtd <= 1) {
-                    setProdutoQtd(1)
-                    alert("impossível colocar 0")
-                }
-            }
+        let updatedCart = produtosSelec
+
+        if (e === 'up' && p.quantity >= 1) {
+            p.quantity += 1
+        } else if (e === 'dw' && p.quantity > 1) {
+            p.quantity -= 1
         }
-        p.quantity = produtoQtd;
+        else {
+            updatedCart = updatedCart.filter((item) => (item._id !== p._id))
+        }
+
+        updatedCart = updatedCart.map((item) => {
+            if (item._id === p._id) {
+                item.quantity = p.quantity
+            }
+            return item
+        })
+        setProdutosSelec(updatedCart)
     }
-    console.log(p);
-    console.log(produtosSelec);
 
     return (
         <CardProtudo>
@@ -33,7 +38,7 @@ export default function CardProd({p}) {
                 <p>{p.name}</p>
             </ContainerInfos>
             <Quantidade>
-                <p>{produtoQtd}</p>
+                <p>{p.quantity}</p>
                 <ArrowUp>
                     <IoMdArrowDropup onClick={() => QuantidadeProduto('up')} />
                 </ArrowUp>
@@ -42,7 +47,7 @@ export default function CardProd({p}) {
                 </ArrowDown>
             </Quantidade>
             <Valor>
-                <p>R$ {(produtoQtd * p.value).toFixed(2).replace('.', ',')}</p>
+                <p>R$ {(p.quantity * p.value).toFixed(2).replace('.', ',')}</p>
             </Valor>
         </CardProtudo>
     );
