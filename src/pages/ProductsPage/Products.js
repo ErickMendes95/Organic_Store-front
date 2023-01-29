@@ -13,10 +13,10 @@ export default function Products() {
     useEffect(() => {
         axios.get(`${process.env.REACT_APP_API_URL}/produtos`)
             .then(res => {
-                setProdutos(res.data);
+                return setProdutos(res.data);
             })
             .catch(err => {
-                (err.response)
+                return console.log(err.response)
             });
     }, [])
 

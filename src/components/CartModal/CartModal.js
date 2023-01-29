@@ -1,4 +1,3 @@
-import { keyframes } from "styled-components";
 import carrinho from "../../assets/images/carrinho.png";
 import { useContext, useState, useEffect } from "react";
 import { ContextSelecionados } from "../../context/ContextSelecionados";
@@ -9,7 +8,7 @@ import { ContainerCart, Cart, LogoCart, Cabeçalho, ContainerProdutos, FinalValu
 export default function CartModal({ showCart }) {
     const navigate = useNavigate()
     const [totalValue, setTotalValue] = useState(0)
-    const [produtosSelec] = useContext(ContextSelecionados);
+    const [produtosSelec] = useContext(ContextSelecionados)
 
     useEffect(() => {
         setTotalValue(produtosSelec.reduce((acc, obj) => {
@@ -19,7 +18,7 @@ export default function CartModal({ showCart }) {
     }, [produtosSelec])
 
     function FinalizarCompra() {
-        navigate("/checkout")
+        navigate("/checkout", {state: {totalValue:totalValue}})
     }
 
     if (showCart === false) return null
@@ -40,7 +39,7 @@ export default function CartModal({ showCart }) {
                 </ContainerProdutos>
                 <FinalValue>
                     <p>VALOR TOTAL:</p>
-                    <p>{totalValue}</p>
+                    <p>R$ {totalValue}</p>
                 </FinalValue>
                 <Finish onClick={() => FinalizarCompra()}>FINALIZAR COMPRA</Finish>
             </Cart>

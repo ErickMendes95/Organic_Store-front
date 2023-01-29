@@ -2,11 +2,17 @@ import Menu from "../../components/Menu/Menu"
 import logo from "../../assets/images/Organic Store - fundo transparente.png"
 import { Container, Logo, ProductInfo, Traits, Title, Trait, Text, Price, PriceTrait, FormsContainer, Label1, Label2 } from "./style"
 import BuyFinishedModal from "../../components/BuyFinishedModal/BuyFinishedModal"
-import { useState } from "react"
+import { useContext, useState } from "react"
 import axios from "axios"
-import { useNavigate } from "react-router-dom"
+import { useLocation, useNavigate} from "react-router-dom"
+import { ContextSelecionados } from "../../context/ContextSelecionados"
 
 export default function Checkout() {
+
+    const [produtosSelec] = useContext(ContextSelecionados)
+    console.log(produtosSelec)
+    const {totalValue} = useLocation().state
+    console.log(totalValue)
 
     const navigate = useNavigate()
     const [showModal, setShowModal] = useState(false)
@@ -18,13 +24,14 @@ export default function Checkout() {
     async function FinalizarCompra(e) {
         e.preventDefault()
         try {
-            // await axios.post("URL do back-end",{
-            //     cardName: cardName,
-            //     cardNumber: cardNumber,
-            //     securityNumber: securityNumber,
-            //     expirationDate: expirationDate,
-            //     products: SelecProducts.produtos
-            // })
+            await axios.post(`${process.env.REACT_APP_API_URL}/checkout`,{
+                cardName: cardName,
+                cardNumber: cardNumber,
+                securityNumber: securityNumber,
+                expirationDate: expirationDate,
+                products: produtosSelec,
+                value: totalValue
+            })
 
             setShowModal(true)
 
@@ -33,7 +40,7 @@ export default function Checkout() {
             }, 3000)
 
         } catch (error) {
-            (error)
+            return console.log(error.message)
         }
     }
     return (
@@ -50,23 +57,14 @@ export default function Checkout() {
                     </Title>
                     <Trait>
                         <Text>
-                            {/* {products.map((p)=> {
-                                <p>{p.name}</p>
-                            })} */}
-                            <p>Tomate - 500gr</p>
-                            <p>Tomate - 500gr</p>
-                            <p>Tomate - 500gr</p>
-                            <p>Tomate - 500gr</p>
-                            <p>Tomate - 500gr</p>
-                            <p>Tomate - 500gr</p>
-                            <p>Tomate - 500gr</p>
-                            <p>Tomate - 500gr</p>
-                            <p>Tomate - 500gr</p>
-                            <p>Tomate - 500gr</p>
-                            <p>Tomate - 500gr</p>
+                            {produtosSelec.map((p)=> {
+                                return <p>{p.name}</p>
+                            })}
                         </Text>
                         <PriceTrait>
-                            <p>R$ 24,00</p>
+                            {produtosSelec.map((p)=> {
+                                return <p>R$ {p.quantity*p.value}</p>
+                            })}
                         </PriceTrait>
                     </Trait>
                 </Traits>
@@ -77,7 +75,7 @@ export default function Checkout() {
                         </ul>
                     </Title>
                     <PriceTrait>
-                        <p>R$ 120,00</p>
+                        <p>R$ {totalValue}</p>
                     </PriceTrait>
                 </Price>
             </ProductInfo>

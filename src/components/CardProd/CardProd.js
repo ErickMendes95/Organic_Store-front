@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext} from "react";
 import { ContextSelecionados } from "../../context/ContextSelecionados";
 import { IoMdArrowDropup, IoMdArrowDropdown } from "react-icons/io";
 import { CardProtudo, ContainerImage, ContainerInfos, Quantidade, ArrowUp, ArrowDown, Valor } from "./style";

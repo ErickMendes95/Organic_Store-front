@@ -16,11 +16,10 @@ function App() {
   const [name, setName] = useState("")
   const [token, setToken] = useState("")
   const [produtosSelec, setProdudosSelec] = useState([]);
-  const [totalValue, setTotalValue] = useState(0)
 
   return (
     <Context.Provider value={{ email, setEmail, password, setPassword, name, setName, token, setToken, confirmPassword, setConfirmPassword }}>
-      <ContextSelecionados.Provider value={[produtosSelec, setProdudosSelec, totalValue, setTotalValue]}>
+      <ContextSelecionados.Provider value={[produtosSelec, setProdudosSelec]}>
 
         <BrowserRouter>
           <Routes>
