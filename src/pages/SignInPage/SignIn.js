@@ -67,6 +67,7 @@ export default function SignIn() {
         <StyledInput
           name="password"
           placeholder="Senha"
+          type="password"
           value={password}
           onChange={e => setPassword(e.target.value)}
           required
