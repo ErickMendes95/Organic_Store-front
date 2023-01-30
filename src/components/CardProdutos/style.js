@@ -14,7 +14,8 @@ export const CardProduto = styled.div`
     padding: 10px;
     overflow: auto;
     img {
-        width: 100px;
+        width: 105px;
+        height: 83px;
     }
     h3{
         text-align: center;

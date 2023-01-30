@@ -33,13 +33,14 @@ export default function CartModal({ showCart }) {
                     <p>VALOR</p>
                 </Cabeçalho>
                 <ContainerProdutos>
+                    {produtosSelec.length === 0 ? <h1>Não há produtos <br/> no carrinho</h1> : <>
                     {produtosSelec.map((p) =>
                         <CardProd key={p._id} p={p} />
-                    )}
+                    )}</>}
                 </ContainerProdutos>
                 <FinalValue>
                     <p>VALOR TOTAL:</p>
-                    <p>R$ {totalValue}</p>
+                    <p>R$ {totalValue.toFixed(2).replace('.', ',')}</p>
                 </FinalValue>
                 <Finish onClick={() => FinalizarCompra()}>FINALIZAR COMPRA</Finish>
             </Cart>

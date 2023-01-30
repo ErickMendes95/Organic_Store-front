@@ -66,6 +66,10 @@ export const ContainerProdutos = styled.div`
     height: 100%;
     margin-bottom: 100px;
     overflow-y: auto;
+    h1{
+        margin-top: 190px;
+        text-align: center;
+    }
 `
 
 export const FinalValue = styled.div`
