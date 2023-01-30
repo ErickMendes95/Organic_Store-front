@@ -3,7 +3,7 @@ import {verdeClaro, verdeEscuro} from "../../constants/colors"
 
 export const Container = styled.div`
     width: 100%;
-    height: 100vh;
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -84,6 +84,7 @@ export const FormsContainer = styled.div`
         border: none;
         border-radius: 5px;
         cursor: pointer;
+        margin-bottom: 50px;
     }
 `
 
