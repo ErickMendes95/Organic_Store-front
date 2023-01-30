@@ -13,7 +13,7 @@ export default function Products() {
     const [showCart, setShowCart] = useState(false)
 
     useEffect(() => {
-        axios.get(`${process.env.REACT_APP_API_URL}/produtos`)
+        axios.get(`https://organic-store.onrender.com/produtos`)
             .then(res => {
                 return setProdutos(res.data);
             })
