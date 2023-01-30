@@ -9,7 +9,7 @@ import { ContextSelecionados } from "../../context/ContextSelecionados"
 
 export default function Checkout() {
 
-    const [produtosSelec] = useContext(ContextSelecionados)
+    const [produtosSelec, setProdudosSelec] = useContext(ContextSelecionados)
     console.log(produtosSelec)
     const {totalValue} = useLocation().state
     console.log(totalValue)
@@ -24,7 +24,7 @@ export default function Checkout() {
     async function FinalizarCompra(e) {
         e.preventDefault()
         try {
-            await axios.post(`${process.env.REACT_APP_API_URL}/checkout`,{
+            await axios.post(`https://organic-store.onrender.com/checkout`,{
                 cardName: cardName,
                 cardNumber: cardNumber,
                 securityNumber: securityNumber,
@@ -34,6 +34,7 @@ export default function Checkout() {
             })
 
             setShowModal(true)
+            setProdudosSelec([])
 
             setTimeout(() => {
                 navigate("/products")

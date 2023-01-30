@@ -28,7 +28,7 @@ export default function SignUp() {
         visible={true}
       />)
 
-      const URL = `${process.env.REACT_APP_API_URL}/signup`
+      const URL = `https://organic-store.onrender.com/signup`
 
       const dadosCadastro = { name, email, password, confirmPassword }
   
