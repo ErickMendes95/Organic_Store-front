@@ -5,10 +5,8 @@ import { ContextSelecionados } from "../../context/ContextSelecionados";
 
 export default function CardProtudo({ p }) {
     const [produtosSelec, setProdutosSelec] = useContext(ContextSelecionados);
-    const [clicked, setClicked] = useState(false);
 
     function selecionarProduto(produto) {
-        setClicked(true);
         setProdutosSelec([...produtosSelec, produto]);
     }
 
@@ -19,7 +17,7 @@ export default function CardProtudo({ p }) {
             <p>R$ {p.value.toFixed(2).replace('.', ',')}</p>
             <button
                 onClick={() => selecionarProduto(p)}
-                disabled={clicked}
+                disabled={produtosSelec.find(prod => prod === p) ? true : false}
             >
                 <TiShoppingCart />
             </button>

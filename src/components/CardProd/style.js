@@ -22,6 +22,7 @@ export const ContainerImage = styled.div`
     height: 50px;
     img{
         width: 50px;
+        height: 40px;
         margin-top: 0px;
     }    
 `
