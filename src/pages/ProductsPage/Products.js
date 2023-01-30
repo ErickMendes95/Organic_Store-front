@@ -6,10 +6,10 @@ import CardProtudo from "../../components/CardProdutos/CardProdutos";
 import CartModal from "../../components/CartModal/CartModal";
 import { ContainerHome, ContainerLogo, ContainerMain, ContainerProdutos } from "./style";
 import { ThreeDots } from "react-loader-spinner";
-import { verdeEscuro, verdeClaro } from "../../constants/colors";
+import { verdeClaro } from "../../constants/colors";
 
 export default function Products() {
-    const [produtos, setProdutos] = useState(undefined);
+    const [produtos, setProdutos] = useState(undefined)
     const [showCart, setShowCart] = useState(false)
 
     useEffect(() => {

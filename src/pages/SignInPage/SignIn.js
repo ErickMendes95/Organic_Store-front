@@ -29,7 +29,7 @@ export default function SignIn() {
         visible={true}
       />)
 
-    const URL = `${process.env.REACT_APP_API_URL}/signin`
+    const URL = `https://organic-store.onrender.com/signin`
 
     const dadosCadastro = { email, password }
 

@@ -1,6 +1,6 @@
 import { CardProduto } from "./style";
 import { TiShoppingCart } from "react-icons/ti";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { ContextSelecionados } from "../../context/ContextSelecionados";
 
 export default function CardProtudo({ p }) {
@@ -17,7 +17,7 @@ export default function CardProtudo({ p }) {
             <p>R$ {p.value.toFixed(2).replace('.', ',')}</p>
             <button
                 onClick={() => selecionarProduto(p)}
-                disabled={produtosSelec.find(prod => prod === p) ? true : false}
+                disabled={produtosSelec.find(prod => prod.name === p.name) ? true : false}
             >
                 <TiShoppingCart />
             </button>
