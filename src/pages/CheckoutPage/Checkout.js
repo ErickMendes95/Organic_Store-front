@@ -64,7 +64,7 @@ export default function Checkout() {
                         </Text>
                         <PriceTrait>
                             {produtosSelec.map((p)=> {
-                                return <p>R$ {p.quantity*p.value}</p>
+                                return <p>R$ {(p.quantity*p.value).toFixed(2).replace('.', ',')}</p>
                             })}
                         </PriceTrait>
                     </Trait>
@@ -76,7 +76,7 @@ export default function Checkout() {
                         </ul>
                     </Title>
                     <PriceTrait>
-                        <p>R$ {totalValue}</p>
+                        <p>R$ {totalValue.toFixed(2).replace('.', ',')}</p>
                     </PriceTrait>
                 </Price>
             </ProductInfo>
